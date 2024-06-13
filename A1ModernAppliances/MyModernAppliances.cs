@@ -1,6 +1,7 @@
 ﻿using ModernAppliances.Entities;
 using ModernAppliances.Entities.Abstract;
 using ModernAppliances.Helpers;
+using System.ComponentModel.Design;
 
 namespace ModernAppliances
 {
@@ -38,28 +39,16 @@ namespace ModernAppliances
             }
             else
             {
-                
-                Console.WriteLine("Appliance has been checked out.");
+                 if (foundAppliance.IsAvailable == true) 
+                {
+                    Console.WriteLine("Appliance has been checked out.");
+                }
+                 else
+                {
+                    Console.WriteLine("The appliance is not available to be checked out.");
+                }
             }
 
-                     
-
-            // Loop through Appliances
-                // Test appliance item number equals entered item number
-                    // Assign appliance in list to foundAppliance variable
-
-                    // Break out of loop (since we found what need to)
-
-            // Test appliance was not found (foundAppliance is null)
-                // Write 
-
-            // Otherwise (appliance was found)
-                // Test found appliance is available
-                    // Checkout found appliance
-
-                    // Write ""
-                // Otherwise (appliance isn't available)
-                    // Write "The appliance is not available to be checked out."
         }
 
         /// <summary>
@@ -67,20 +56,20 @@ namespace ModernAppliances
         /// </summary>
         public override void Find()
         {
-            // Write "Enter brand to search for:"
+            Console.WriteLine("Enter brand to search for:");
+            string brand_input = Console.ReadLine();
 
-            // Create string variable to hold entered brand
-            // Get user input as string and assign to variable.
+            List<Appliance> found_appliances = new List<Appliance>();
 
-            // Create list to hold found Appliance objects
+            foreach(Appliance appliance in Appliances) 
+            {
+                if (brand_input == appliance.Brand)
+                {
+                    found_appliances.Add(appliance);
+                }
+            }
+            DisplayAppliancesFromList(found_appliances, found_appliances.Count);
 
-            // Iterate through loaded appliances
-                // Test current appliance brand matches what user entered
-                    // Add current appliance in list to found list
-
-
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
         }
 
         /// <summary>
@@ -88,14 +77,15 @@ namespace ModernAppliances
         /// </summary>
         public override void DisplayRefrigerators()
         {
-            // Write "Possible options:"
+            Console.WriteLine("Possible options:\0 - Any\n2 - Double doors\n3 - Three doors\n4 - Four doors\n\nEnter number of doors: ");
+            doorNum =Console.ReadLine();
 
             // Write "0 - Any"
-            // Write "2 - Double doors"
-            // Write "3 - Three doors"
-            // Write "4 - Four doors"
+            // Write ""
+            // Write ""
+            // Write ""
 
-            // Write "Enter number of doors: "
+            // Write ""
 
             // Create variable to hold entered number of doors
 
